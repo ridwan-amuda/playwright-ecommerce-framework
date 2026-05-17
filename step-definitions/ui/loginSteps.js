@@ -2,6 +2,7 @@ const { Given, When, Then,}= require('@cucumber/cucumber')
 const assert = require('assert')
 const {POManager} = require('../../pages/POManager');
 const {expect,playright} = require ('@playwright/test');
+const users = require('../../test-data/users.json')
 
 
 Given('the user is on the home page', async function () {
@@ -18,7 +19,9 @@ When('the user clicks on Signup Login', async function () {
 
 Then('the user enters valid login credentials', async function () {
   const loginPage = this.poManager.getLoginPage()
-  await loginPage.login('michael.smith@testmail.com', 'Michael');
+    
+  await loginPage.login(users.validUser.email,
+                        users.validUser.password);
   
 });
 
@@ -33,7 +36,9 @@ Then('the user should be logged in successfully', async function () {
 When('the user enters invalid login credentials', async function () {
   
   const loginPage = this.poManager.getLoginPage()
-  await loginPage.login('wrongemail@test.com', 'WrongPassword123');
+  
+  await loginPage.login(users.invalidUser.email,
+                        users.invalidUser.password);
 
 });
 
