@@ -6,7 +6,7 @@ class LoginPage {
     this.passwordInput = page.locator('input[data-qa="login-password"]');
     this.loginButton = page.locator('button[data-qa="login-button"]');
     this.loggedInText = page.locator('text=Logged in as');
-    this.errorMessage = page.locator('text=Your email or password is incorrect!');
+    this.invalidLoginErrorMessage = page.locator('text=Your email or password is incorrect!');
   }
 
  
@@ -31,8 +31,8 @@ class LoginPage {
   }
 
 
-  async isErrorMessageVisible() {
-    return await this.errorMessage.isVisible();
+  async isInvalidLoginErrorVisible() {
+    return await this.invalidLoginErrorMessage.isVisible();
   }
 }
 

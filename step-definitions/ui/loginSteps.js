@@ -1,4 +1,4 @@
-const { Given, When, Then, And}= require('@cucumber/cucumber')
+const { Given, When, Then,}= require('@cucumber/cucumber')
 const assert = require('assert')
 const {POManager} = require('../../pages/POManager');
 const {expect,playright} = require ('@playwright/test');
@@ -29,3 +29,21 @@ Then('the user should be logged in successfully', async function () {
 
   assert.strictEqual(isLoggedIn, true);
 });
+
+When('the user enters invalid login credentials', async function () {
+  
+  const loginPage = this.poManager.getLoginPage()
+  await loginPage.login('wrongemail@test.com', 'WrongPassword123');
+
+});
+
+
+
+Then('an error message should be displayed', async function () {
+
+  const loginPage = this.poManager.getLoginPage();
+  const isVisible = await loginPage.isInvalidLoginErrorVisible();
+  assert.strictEqual(isVisible, true);
+
+});
+
