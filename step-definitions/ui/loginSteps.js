@@ -14,6 +14,7 @@ Given('the user is on the home page', async function () {
 When('the user clicks on Signup Login', async function () {
   const homePage = this.poManager.getHomePage();
   homePage.clickSignupLogin();
+  await this.page.waitForURL('**/login');
   
 });
 
