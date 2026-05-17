@@ -1,0 +1,22 @@
+{
+  "name": "playwright-ecommerce-framework",
+  "version": "1.0.0",
+  "description": "Playwright UI and API automation framework using JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test:bdd": "cucumber-js",
+    "test:headed": "cucumber-js --world-parameters '{\"headless\":false}'"
+     
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^12.8.1",
+    "dotenv": "^17.4.2"
+  }
+}
