@@ -1,6 +1,8 @@
-const { Before, After, AfterStep, BeforeStep, Status} = require('@cucumber/cucumber');
+const { Before, After, AfterStep, BeforeStep, setDefaultTimeout, Status} = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
 const { POManager } = require('../pages/POManager');
+
+setDefaultTimeout(60000);
 
 Before(async function () {
   this.browser = await chromium.launch({

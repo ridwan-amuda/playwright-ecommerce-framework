@@ -5,6 +5,6 @@ module.exports = {
       'hooks/**/*.js'
     ],
     format: ['progress'],
-    timeout: 70000
+    timeout: 60000
   }
 };

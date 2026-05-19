@@ -8,6 +8,11 @@ class ProductPage {
     this.searchButton = page.locator('#submit_search');
     this.searchedProductsTitle = page.locator('text=Searched Products');
     this.productItems = page.locator('.features_items .product-image-wrapper');
+    this.firstAddToCartButton = page.locator('.product-overlay a[data-product-id]').first();
+    this.continueShoppingButton = page.locator('button:has-text("Continue Shopping")');
+    this.viewCartLink = page.locator('u:has-text("View Cart")');
+    this.firstProductCard = page.locator('.product-image-wrapper').first();
+    this.firstAddToCartButton = page.locator('.product-overlay a[data-product-id]').first();
   }
 
   async navigateToProductsPage() {
@@ -28,6 +33,24 @@ class ProductPage {
   async getProductCount() {
     return await this.productItems.count();
   }
+
+  async addFirstProductToCart() {
+
+  await this.firstProductCard.waitFor({ state: 'visible' });
+  await this.firstProductCard.hover();
+  await this.firstAddToCartButton.waitFor({ state: 'visible', timeout: 10000 });
+  await this.firstAddToCartButton.click();
+}
+
+
+async clickViewCart() {
+
+  await this.viewCartLink.waitFor({ state: 'visible' });
+  await this.viewCartLink.click();
+}
+
+
+
 }
 
 module.exports = { ProductPage };
