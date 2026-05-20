@@ -17,9 +17,14 @@ class LoginPage {
 
   async login(email, password) 
   {
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
-    await this.loginButton.click();
+  await this.emailInput.waitFor({ state: 'visible' });
+  await this.emailInput.fill(email);
+
+  await this.passwordInput.waitFor({ state: 'visible' });
+  await this.passwordInput.fill(password);
+
+  await this.loginButton.waitFor({ state: 'visible' });
+  await this.loginButton.click();
     
   }
 
@@ -27,6 +32,12 @@ class LoginPage {
 
   async isUserLoggedIn() 
   {
+    
+    await this.loggedInText.waitFor({
+    state: 'visible',
+    timeout: 10000
+  });
+    
     return await this.loggedInText.isVisible();
   }
 
