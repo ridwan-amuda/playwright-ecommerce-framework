@@ -12,6 +12,25 @@ class ProductAPI {
 
     return response;
   }
+
+
+
+async searchProduct(productName) {
+  const apiContext = await request.newContext();
+
+  const response = await apiContext.post(
+    'https://automationexercise.com/api/searchProduct',
+    {
+      form: {
+        search_product: productName
+      }
+    }
+  );
+
+  return response;
+}
+
+
 }
 
 module.exports = { ProductAPI };
