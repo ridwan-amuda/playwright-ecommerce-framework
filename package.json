@@ -4,16 +4,18 @@
   "description": "Playwright UI and API automation framework using JavaScript",
   "main": "index.js",
   "scripts": {
-    "test:bdd": "cucumber-js",
-    "test:headed": "cucumber-js --world-parameters '{\"headless\":false}'"
-     
+     "test:bdd": "cucumber-js",
+     "report": "node reports/report.js",
+     "test:report": "npm run test:bdd && npm run report",
+     "test:headed": "cucumber-js --world-parameters '{\"headless\":false}'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.0"
+    "@types/node": "^25.6.0",
+    "multiple-cucumber-html-reporter": "^3.10.0"
   },
   "dependencies": {
     "@cucumber/cucumber": "^12.8.1",

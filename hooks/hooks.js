@@ -46,10 +46,6 @@ After(async function () {
   
   
   
-  // await this.page.close();
-  // await this.context.close();
-  // await this.browser.close();
-  
 });
 
 
@@ -60,21 +56,12 @@ AfterStep ( async function ({result})
 {
   if (result.status === Status.FAILED) 
     {
-    await this.page.screenshot({path : 'screenshot1.png'});
+    await this.page.screenshot({
+  path: `reports/screenshots/${Date.now()}.png`
+});
     }
 
     });
 
 
 
-// this.browser = await chromium.launch({ headless: false });
-//   this.context = await this.browser.newContext();
-//   this.page = await this.context.newPage();
-//   this.poManager = new POManager(this.page)
-
-
-
-// const browser = await chromium.launch({ headless: false });
-//   const context = await browser.newContext();
-//   this.page = await context.newPage();
-//   this.poManager = new POManager(this.page);
