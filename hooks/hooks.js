@@ -6,7 +6,7 @@ setDefaultTimeout(60000);
 
 Before(async function () {
   this.browser = await chromium.launch({
-    headless: false,
+    headless: true,
     args: [
       '--disable-save-password-bubble',
       '--disable-features=PasswordManagerOnboarding,PasswordCheck'
