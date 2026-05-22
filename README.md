@@ -39,6 +39,7 @@ playwright-ecommerce-bdd-framework/
 │   │   └── checkout.feature
 │   └── api/
 │       ├── products.feature
+│       ├── searchProduct.feature
 │       └── loginApi.feature
 │
 ├── step-definitions/
