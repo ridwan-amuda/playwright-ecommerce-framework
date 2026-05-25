@@ -16,8 +16,15 @@ class ProductPage {
   }
 
   async navigateToProductsPage() {
-    await this.productsLink.click();
-    await this.page.waitForURL('**/products');
+    await this.productsLink.waitFor({ state: 'visible', timeout: 10000 });
+
+  await Promise.all([
+    this.page.waitForURL('**/products', {
+      waitUntil: 'domcontentloaded',
+      timeout: 60000
+    }),
+    this.productsLink.click()
+  ]);
   }
 
   async searchProduct(productName) {
