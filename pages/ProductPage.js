@@ -16,16 +16,16 @@ class ProductPage {
   }
 
   async navigateToProductsPage() {
-    await this.productsLink.waitFor({ state: 'visible', timeout: 10000 });
+  await this.page.goto('https://automationexercise.com/products', {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  });
 
-  await Promise.all([
-    this.page.waitForURL('**/products', {
-      waitUntil: 'domcontentloaded',
-      timeout: 60000
-    }),
-    this.productsLink.click()
-  ]);
-  }
+  await this.searchInput.waitFor({
+    state: 'visible',
+    timeout: 30000
+  });
+}
 
   async searchProduct(productName) {
     await this.searchInput.waitFor({ state: 'visible' });
