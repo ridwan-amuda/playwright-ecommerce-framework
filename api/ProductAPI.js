@@ -50,6 +50,18 @@ async loginUser(email, password) {
 }
 
 
+async createUser(userData) {
+  const apiContext = await request.newContext();
+
+  const response = await apiContext.post(
+    'https://automationexercise.com/api/createAccount',
+    {
+      form: userData
+    }
+  );
+
+  return response;
+}
 
 
 
