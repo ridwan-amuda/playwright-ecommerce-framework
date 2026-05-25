@@ -31,6 +31,28 @@ async searchProduct(productName) {
 }
 
 
+
+
+async loginUser(email, password) {
+  const apiContext = await request.newContext();
+
+  const response = await apiContext.post(
+    'https://automationexercise.com/api/verifyLogin',
+    {
+      form: {
+        email: email,
+        password: password
+      }
+    }
+  );
+
+  return response;
+}
+
+
+
+
+
 }
 
 module.exports = { ProductAPI };
