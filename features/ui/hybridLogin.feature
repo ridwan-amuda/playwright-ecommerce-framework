@@ -4,3 +4,4 @@ Feature: Hybrid UI + API Login
     Given a new user account is created via API
     When the user logs into the UI with the created account
     Then the user should be logged in successfully
+     And the created user account should be deleted via API

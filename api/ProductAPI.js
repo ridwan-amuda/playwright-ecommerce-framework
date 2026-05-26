@@ -31,6 +31,22 @@ async searchProduct(productName) {
 }
 
 
+async deleteUser(email, password) {
+  const apiContext = await request.newContext();
+
+  const response = await apiContext.delete(
+    'https://automationexercise.com/api/deleteAccount',
+    {
+      form: {
+        email: email,
+        password: password
+      }
+    }
+  );
+
+  return response;
+}
+
 
 
 async loginUser(email, password) {
