@@ -24,3 +24,4 @@ async acceptCookiesIfVisible() {
 }
 
 module.exports = { HomePage };
+

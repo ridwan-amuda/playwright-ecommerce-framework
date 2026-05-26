@@ -1,6 +1,10 @@
 const { generateRandomEmail } = require('../utils/helpers');
 
-const createUserData = {
+
+function getCreateUserData()
+
+{
+return {
   name: 'Test User',
   email: generateRandomEmail(),
   password: 'Password123',
@@ -19,5 +23,6 @@ const createUserData = {
   city: 'Toronto',
   mobile_number: '1234567890'
 };
+}
 
-module.exports = { createUserData };
+module.exports = { getCreateUserData };

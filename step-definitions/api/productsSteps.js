@@ -5,7 +5,6 @@ const { ProductAPI } = require('../../api/ProductAPI');
 When('the user sends a GET request to the products API', async function () {
 
   const productAPI = new ProductAPI();
-
   this.response = await productAPI.getAllProducts();
 });
 

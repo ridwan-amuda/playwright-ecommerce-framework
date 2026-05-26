@@ -1,13 +1,15 @@
 const { When, Then } = require('@cucumber/cucumber');
 const assert = require('assert');
 const { ProductAPI } = require('../../api/ProductAPI');
-const { createUserData } = require('../../test-data/createUserData');
+const { getCreateUserData } = require('../../test-data/createUserData');
 const { generateRandomEmail } = require('../../utils/helpers');
 
 When('the user sends a POST request to create a new user', async function () {
   const productAPI = new ProductAPI();
+  const userData = getCreateUserData();
+  
 
-  this.response = await productAPI.createUser(createUserData);
+  this.response = await productAPI.createUser(userData);
 });
 
 Then('the create user API response should confirm account created', async function () {
