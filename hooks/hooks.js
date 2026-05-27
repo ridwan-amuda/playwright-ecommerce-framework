@@ -25,28 +25,33 @@ this.poManager = new POManager(this.page);
 });
   
 
-After(async function () {
-  
-  if (this.page) {
-    await this.page.close();
+After(async function (scenario) {
+
+  if (scenario.result.status === Status.FAILED) {
+
+    const screenshot = await this.page.screenshot({
+      path: `reports/screenshots/${Date.now()}.png`,
+      fullPage: true
+    });
+
+    this.attach(screenshot, 'image/png');
   }
 
-  if (this.context) {
-    await this.context.close();
-  }
+  if (this.page) await this.page.close();
+  if (this.context) await this.context.close();
+  if (this.browser) await this.browser.close();
 
-  if (this.browser) {
-    await this.browser.close();
-  }
-  
   this.poManager = new POManager(this.page);
-  
-  
-  
-  
-  
-  
 });
+  
+  
+  
+  
+  
+  
+  
+  
+
 
 
 
@@ -62,6 +67,7 @@ AfterStep ( async function ({result})
     }
 
     });
+
 
 
 
