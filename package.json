@@ -7,8 +7,14 @@
      "test:bdd": "cucumber-js",
      "report": "node reports/report.js",
      "test:report": "npm run test:bdd && npm run report",
-     "test:headed": "cucumber-js --world-parameters '{\"headless\":false}'"
-  },
+     "test:headed": "cucumber-js --world-parameters '{\"headless\":false}'",
+     "test:smoke": "cucumber-js --tags \"@smoke\"",
+      "test:ui": "cucumber-js --tags \"@ui\"",
+      "test:api": "cucumber-js --tags \"@api\"",
+      "test:hybrid": "cucumber-js --tags \"@hybrid\"",
+      "test:regression": "cucumber-js --tags \"@regression\""
+  
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",

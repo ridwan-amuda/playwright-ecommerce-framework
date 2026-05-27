@@ -1,3 +1,5 @@
+@ui @regression @search
+
 Feature: Product Search
 
   Scenario: User searches for an existing product

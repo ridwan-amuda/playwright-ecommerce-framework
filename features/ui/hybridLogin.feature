@@ -1,3 +1,5 @@
+@hybrid @regression
+
 Feature: Hybrid UI + API Login
 
   Scenario: User logs in with dynamically created API account

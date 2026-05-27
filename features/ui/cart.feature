@@ -1,3 +1,5 @@
+@ui @regression @cart
+
 Feature: Cart functionality
 
   Scenario: User adds a product to cart successfully

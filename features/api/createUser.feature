@@ -1,3 +1,5 @@
+@api @regression
+
 Feature: Create User API
 
   Scenario: Create a new user successfully

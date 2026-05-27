@@ -1,3 +1,5 @@
+@api @smoke
+
 Feature: Product API
 
   Scenario: Verify all products API returns products successfully

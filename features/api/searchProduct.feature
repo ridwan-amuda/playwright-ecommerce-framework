@@ -1,3 +1,5 @@
+@api @regression
+
 Feature: Search Product API
 
   Scenario: Search for a product successfully

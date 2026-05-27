@@ -1,3 +1,5 @@
+@api @regression
+
 Feature: Login API
 
   Scenario: Verify login API with valid credentials

@@ -1,3 +1,5 @@
+@ui @regression @checkout
+
 Feature: Checkout functionality
 
   Scenario: User proceeds to checkout successfully
