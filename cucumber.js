@@ -12,6 +12,8 @@ module.exports = {
 
     timeout: 60000,
 
-    retry: 1
+    retry: 1,
+
+    parallel: 2
   }
 };
