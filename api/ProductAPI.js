@@ -1,13 +1,13 @@
 const { request } = require('@playwright/test');
+const { apiBaseUrl } = require('../utils/env');
 
 class ProductAPI {
 
   async getAllProducts() {
 
     const apiContext = await request.newContext();
-
     const response = await apiContext.get(
-      'https://automationexercise.com/api/productsList'
+      `${apiBaseUrl}/productsList`,
     );
 
     return response;
@@ -19,7 +19,7 @@ async searchProduct(productName) {
   const apiContext = await request.newContext();
 
   const response = await apiContext.post(
-    'https://automationexercise.com/api/searchProduct',
+    `${apiBaseUrl}/searchProduct`,
     {
       form: {
         search_product: productName
@@ -35,7 +35,7 @@ async deleteUser(email, password) {
   const apiContext = await request.newContext();
 
   const response = await apiContext.delete(
-    'https://automationexercise.com/api/deleteAccount',
+    `${apiBaseUrl}/deleteAccount`,
     {
       form: {
         email: email,
@@ -53,7 +53,7 @@ async loginUser(email, password) {
   const apiContext = await request.newContext();
 
   const response = await apiContext.post(
-    'https://automationexercise.com/api/verifyLogin',
+      `${apiBaseUrl}/verifyLogin`,
     {
       form: {
         email: email,
@@ -70,7 +70,7 @@ async createUser(userData) {
   const apiContext = await request.newContext();
 
   const response = await apiContext.post(
-    'https://automationexercise.com/api/createAccount',
+    `${apiBaseUrl}/createAccount`,
     {
       form: userData
     }

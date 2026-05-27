@@ -1,4 +1,8 @@
+const { acceptCookiesIfVisible } = require('../utils/cookieHelper');
+
+
 class LoginPage {
+ 
 
   constructor(page) {
     this.page = page;
@@ -17,6 +21,8 @@ class LoginPage {
 
   async login(email, password) 
   {
+   await acceptCookiesIfVisible(this.page);
+  
   await this.emailInput.waitFor({ state: 'visible' });
   await this.emailInput.fill(email);
 

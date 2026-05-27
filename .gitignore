@@ -149,3 +149,4 @@ vite.config.ts.timestamp-*
 reports/html-report/
 reports/cucumber-report.json
 reports/screenshots/
+.env

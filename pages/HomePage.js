@@ -1,3 +1,5 @@
+const { baseUrl } = require('../utils/env');
+
 class HomePage {
   
   constructor(page) {
@@ -6,7 +8,10 @@ class HomePage {
   }
 
   async open() {
-    await this.page.goto('https://automationexercise.com/');
+    await this.page.goto(baseUrl, {
+  waitUntil: 'domcontentloaded',
+  timeout: 60000
+});
   }
 
 async acceptCookiesIfVisible() {
@@ -25,3 +30,7 @@ async acceptCookiesIfVisible() {
 
 module.exports = { HomePage };
 
+
+// async open() {
+//     await this.page.goto('https://automationexercise.com/');
+//   }

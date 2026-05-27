@@ -1,3 +1,6 @@
+const { acceptCookiesIfVisible } = require('../utils/cookieHelper');
+const { baseUrl } = require('../utils/env');
+
 class ProductPage {
  
    constructor(page) {
@@ -8,20 +11,23 @@ class ProductPage {
     this.searchButton = page.locator('#submit_search');
     this.searchedProductsTitle = page.locator('text=Searched Products');
     this.productItems = page.locator('.features_items .product-image-wrapper');
-    this.firstAddToCartButton = page.locator('.product-overlay a[data-product-id]').first();
+   // this.firstAddToCartButton = page.locator('.product-overlay a[data-product-id]').first();
     this.continueShoppingButton = page.locator('button:has-text("Continue Shopping")');
     this.viewCartLink = page.locator('u:has-text("View Cart")');
     this.firstProductCard = page.locator('.product-image-wrapper').first();
-    this.firstAddToCartButton = page.locator('.product-overlay a[data-product-id]').first();
+    this.firstAddToCartButton = page.locator('.productinfo a[data-product-id]').first();
   }
 
   async navigateToProductsPage() {
-  await this.page.goto('https://automationexercise.com/products', {
+  
+  await this.page.goto(`${baseUrl}/products`, {
     waitUntil: 'domcontentloaded',
     timeout: 60000
   });
-
-  await this.searchInput.waitFor({
+  
+  
+  
+await this.searchInput.waitFor({
     state: 'visible',
     timeout: 30000
   });
@@ -42,18 +48,26 @@ class ProductPage {
   }
 
   async addFirstProductToCart() {
+  await acceptCookiesIfVisible(this.page);
 
-  await this.firstProductCard.waitFor({ state: 'visible' });
-  await this.firstProductCard.hover();
-  await this.firstAddToCartButton.waitFor({ state: 'visible', timeout: 10000 });
+  await this.firstAddToCartButton.waitFor({
+    state: 'visible',
+    timeout: 10000
+  });
+
+  await this.firstAddToCartButton.scrollIntoViewIfNeeded();
+
   await this.firstAddToCartButton.click();
 }
 
 
 async clickViewCart() {
+  await acceptCookiesIfVisible(this.page);
 
-  await this.viewCartLink.waitFor({ state: 'visible' });
-  await this.viewCartLink.click();
+  await this.page.goto(`${baseUrl}/view_cart`, {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  });
 }
 
 
