@@ -8,7 +8,7 @@ const users = require('../../test-data/users.json')
 Given('the user is on the home page', async function () {
     const homePage = this.poManager.getHomePage();
     await homePage.open();
-    await homePage.acceptCookiesIfVisible();
+    
 });
 
 When('the user clicks on Signup Login', async function () {

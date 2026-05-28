@@ -20,8 +20,6 @@ When('the user logs into the UI with the created account', async function () {
 
   await homePage.open();
 
-  await homePage.acceptCookiesIfVisible();
-
   await homePage.clickSignupLogin();
 
   await loginPage.login(

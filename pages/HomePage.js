@@ -1,4 +1,5 @@
 const { baseUrl } = require('../utils/env');
+const { acceptCookiesIfVisible } = require('../utils/cookieHelper');
 
 class HomePage {
   
@@ -12,25 +13,25 @@ class HomePage {
   waitUntil: 'domcontentloaded',
   timeout: 60000
 });
+  
+
+
+   await acceptCookiesIfVisible(this.page);
+
+    await this.signupLoginLink.waitFor({
+      state: 'visible',
+      timeout: 30000
+    });
   }
 
-async acceptCookiesIfVisible() {
-  const consentButton = this.page.getByRole('button', { name: 'Consent' });
 
-  if (await consentButton.isVisible({ timeout: 5000 }).catch(() => false)) {
-    await consentButton.click();
-  }
-}
 
 
   async clickSignupLogin() {
+     await acceptCookiesIfVisible(this.page);
     await this.signupLoginLink.click();
   }
 }
 
 module.exports = { HomePage };
 
-
-// async open() {
-//     await this.page.goto('https://automationexercise.com/');
-//   }
