@@ -13,7 +13,7 @@ env:
   BASE_URL: https://automationexercise.com
   API_BASE_URL: https://automationexercise.com/api
   HEADLESS: true
-  git
+  
 jobs:
 
   test:
