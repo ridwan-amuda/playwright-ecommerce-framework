@@ -6,6 +6,7 @@ const { headless } = require('../utils/env');
 setDefaultTimeout(60000);
 
 Before(async function () {
+  
   this.browser = await chromium.launch({
     headless: headless,
     args: [
