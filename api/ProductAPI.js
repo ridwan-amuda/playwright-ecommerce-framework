@@ -1,5 +1,6 @@
 const { request } = require('@playwright/test');
 const { apiBaseUrl } = require('../utils/env');
+const { acceptCookiesIfVisible } = require('../utils/cookieHelper');
 
 class ProductAPI {
 
@@ -49,21 +50,21 @@ async deleteUser(email, password) {
 
 
 
-async loginUser(email, password) {
-  const apiContext = await request.newContext();
+// async loginUser(email, password) {
+//   const apiContext = await request.newContext();
 
-  const response = await apiContext.post(
-      `${apiBaseUrl}/verifyLogin`,
-    {
-      form: {
-        email: email,
-        password: password
-      }
-    }
-  );
+//   const response = await apiContext.post(
+//       `${apiBaseUrl}/verifyLogin`,
+//     {
+//       form: {
+//         email: email,
+//         password: password
+//       }
+//     }
+//   );
 
-  return response;
-}
+//   return response;
+// }
 
 
 async createUser(userData) {
