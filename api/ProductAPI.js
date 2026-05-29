@@ -49,24 +49,6 @@ async deleteUser(email, password) {
 }
 
 
-
-// async loginUser(email, password) {
-//   const apiContext = await request.newContext();
-
-//   const response = await apiContext.post(
-//       `${apiBaseUrl}/verifyLogin`,
-//     {
-//       form: {
-//         email: email,
-//         password: password
-//       }
-//     }
-//   );
-
-//   return response;
-// }
-
-
 async createUser(userData) {
   const apiContext = await request.newContext();
 

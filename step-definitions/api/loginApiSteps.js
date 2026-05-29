@@ -19,8 +19,7 @@ When('the user sends a POST request to login API with valid credentials', async 
 When('the user sends a POST request to login API with invalid credentials', async function () {
     const userAPI = new UserAPI();
 
-  //const productAPI = new ProductAPI();
-
+ 
   this.response = await userAPI.loginUser(
     users.invalidUser.email,
     users.invalidUser.password
