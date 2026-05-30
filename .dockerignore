@@ -1,0 +1,6 @@
+node_modules
+reports/html-report
+reports/cucumber-report.json
+reports/screenshots
+.git
+.env
