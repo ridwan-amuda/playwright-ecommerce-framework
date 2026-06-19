@@ -2,11 +2,28 @@
 
 ![CI](https://github.com/ridwan-amuda/playwright-ecommerce-framework/actions/workflows/playwright.yml/badge.svg)
 
-A scalable end-to-end automation framework built using **Playwright, JavaScript, and Cucumber BDD**, supporting **UI, API, and Hybrid Automation Testing** with CI/CD integration, Docker support, reporting, and dynamic test data management.
+A scalable end-to-end automation framework built using **Playwright, JavaScript, and Cucumber BDD**, supporting **UI, API, and Hybrid Automation Testing** with CI/CD integration, Docker support, reporting, environment management, and dynamic test data generation.
 
 ---
 
-## ✅ Current Framework Capabilities
+# 🚀 Overview
+
+This framework demonstrates modern SDET practices and combines:
+
+* UI Automation
+* API Automation
+* Hybrid UI + API Automation
+* Cucumber BDD
+* Playwright
+* Page Object Model (POM)
+* CI/CD Integration
+* Docker Containerization
+* Authentication State Reuse
+* Dynamic Test Data Management
+
+---
+
+# ✅ Current Framework Capabilities
 
 * UI Automation
 * API Automation
@@ -16,6 +33,7 @@ A scalable end-to-end automation framework built using **Playwright, JavaScript,
 * Page Object Manager Pattern
 * Dynamic Test Data Generation
 * Domain-Based API Architecture (UserAPI / ProductAPI)
+* Authentication State Reuse (Playwright storageState)
 * Cucumber Tags (Smoke, Regression, UI, API, Hybrid)
 * Parallel Execution
 * Retry Mechanism
@@ -47,26 +65,28 @@ A scalable end-to-end automation framework built using **Playwright, JavaScript,
 ## Hybrid Automation
 
 * Create user via API
-* Login via UI using created user
+* Login via UI using dynamically created user
 * Delete user via API
 
-## Framework Engineering
+## Framework Design & Engineering
 
 * Page Object Model (POM)
 * Page Object Manager Pattern
-* Domain-based API architecture
-* Dynamic test data generation
-* Environment configuration using `.env`
-* Screenshot capture on failure
-* Parallel execution
-* Retry mechanism
-* Cucumber tags for selective execution
+* Domain-Based API Architecture
+* Dynamic Test Data Generation
+* Environment Configuration using `.env`
+* Authentication State Management using Playwright storageState
+* Screenshot Capture on Failure
+* Parallel Execution
+* Retry Mechanism
+* Cucumber Tags for Selective Execution
 
 ## DevOps & CI/CD
 
-* GitHub Actions pipeline
-* Docker support
-* Automated report generation
+* GitHub Actions Pipeline
+* Docker Containerization
+* Automated Report Generation
+* Headless Execution Support
 
 ---
 
@@ -110,6 +130,12 @@ playwright-ecommerce-framework/
 │
 ├── hooks/
 │
+├── scripts/
+│   └── saveAuthState.js
+│
+├── storage/
+│   └── auth.json (generated locally)
+│
 ├── utils/
 │
 ├── test-data/
@@ -122,7 +148,7 @@ playwright-ecommerce-framework/
 ├── Dockerfile
 ├── cucumber.js
 ├── package.json
-├── README.md
+└── README.md
 ```
 
 ---
@@ -130,7 +156,7 @@ playwright-ecommerce-framework/
 # 🏗️ Framework Architecture
 
 ```text
-Feature File
+Feature Files
       │
       ▼
 Step Definitions
@@ -147,55 +173,93 @@ Application Under Test
 
 ---
 
+# 🔐 Authentication State Reuse
+
+The framework supports Playwright Authentication State Reuse using `storageState`.
+
+Benefits:
+
+* Eliminates repetitive login steps
+* Reduces execution time
+* Improves test stability
+* Supports authenticated business-flow testing
+
+Generate authentication state:
+
+```bash
+npm run auth:save
+```
+
+Generated file:
+
+```text
+storage/auth.json
+```
+
+Authenticated scenarios can be executed using:
+
+```gherkin
+@authenticated
+Scenario: Logged in user views products
+```
+
+---
+
 # 🧪 Test Execution
 
-### Run complete framework
+### Run Complete Framework
 
 ```bash
 npm run test:bdd
 ```
 
-### Run UI tests
+### Run UI Tests
 
 ```bash
 npm run test:ui
 ```
 
-### Run API tests
+### Run API Tests
 
 ```bash
 npm run test:api
 ```
 
-### Run Hybrid tests
+### Run Hybrid Tests
 
 ```bash
 npm run test:hybrid
 ```
 
-### Run Smoke suite
+### Run Smoke Suite
 
 ```bash
 npm run test:smoke
 ```
 
-### Run Regression suite
+### Run Regression Suite
 
 ```bash
 npm run test:regression
+```
+
+### Generate Authentication State
+
+```bash
+npm run auth:save
 ```
 
 ---
 
 # 🐳 Docker Execution
 
-### Build Docker image
+### Build Docker Image
 
 ```bash
 docker build -t playwright-bdd-framework .
 ```
 
-### Run framework inside Docker
+### Run Framework Inside Docker
 
 ```bash
 docker run --rm playwright-bdd-framework
@@ -213,6 +277,8 @@ API_BASE_URL=https://automationexercise.com/api
 HEADLESS=true
 ```
 
+The framework dynamically loads environment variables using `dotenv`.
+
 ---
 
 # 📊 Reporting
@@ -221,8 +287,8 @@ Framework supports:
 
 * Cucumber HTML Reports
 * JSON Reports
-* Screenshot capture on failure
-* GitHub Actions artifacts
+* Screenshot Capture on Failure
+* GitHub Actions Artifacts
 
 ---
 
@@ -234,36 +300,26 @@ The framework automatically executes through GitHub Actions:
 * On pull requests
 * Generates execution reports
 * Supports headless browser execution
+* Publishes execution artifacts
 
 ---
 
-# 🎯 Key Learning Objectives
+# 🔧 Challenges Solved During Framework Development
 
-This framework demonstrates:
-
-* UI Automation
-* API Automation
-* Hybrid Automation
-* Test Framework Design
-* CI/CD Integration
-* Docker Containerization
-* Dynamic Test Data Handling
-* Scalable Automation Architecture
+* Resolved Linux case-sensitivity issues affecting CI execution (`ProductAPI.js` vs `productAPI.js`)
+* Implemented reusable cookie-consent handling to prevent UI interaction failures
+* Stabilized flaky UI tests using explicit waits and synchronization strategies
+* Added environment-based configuration to support multiple execution environments
+* Implemented screenshot capture for failure analysis
+* Introduced authentication state reuse using Playwright storageState
+* Containerized framework execution using Docker
+* Integrated automated execution through GitHub Actions CI/CD pipeline
 
 ---
 
-# 🚀 Future Enhancements
-
-* Jenkins Pipeline Integration
-* Azure DevOps Pipeline Integration
-* Test Analytics Dashboard
-* Cross-Browser Execution Matrix
-* Cloud Execution Support
-
----
 
 # 👨‍💻 Author
 
 **Ridwan Amuda**
 
-Automation Engineer | SDET | Playwright | API Testing | CI/CD
+Senior QA Automation Engineer | SDET | Playwright | API Testing | CI/CD | Test Framework Design
