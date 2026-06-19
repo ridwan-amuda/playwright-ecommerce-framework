@@ -12,7 +12,8 @@
     "test:ui": "cucumber-js --tags \"@ui\"",
     "test:api": "cucumber-js --tags \"@api\"",
     "test:hybrid": "cucumber-js --tags \"@hybrid\"",
-    "test:regression": "cucumber-js --tags \"@regression\""
+    "test:regression": "cucumber-js --tags \"@regression\"",
+    "auth:save": "node scripts/saveAuthState.js"
   },
   "keywords": [],
   "author": "",

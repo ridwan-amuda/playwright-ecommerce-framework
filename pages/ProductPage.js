@@ -28,6 +28,7 @@ class ProductPage {
   
   
 await this.searchInput.waitFor({
+  
     state: 'visible',
     timeout: 30000
   });

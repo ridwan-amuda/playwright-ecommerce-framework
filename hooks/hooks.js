@@ -5,8 +5,7 @@ const { headless } = require('../utils/env');
 
 setDefaultTimeout(60000);
 
-Before(async function () {
-  
+Before(async function (scenario) {
   this.browser = await chromium.launch({
     headless: headless,
     args: [
@@ -15,15 +14,21 @@ Before(async function () {
     ]
   });
 
-  this.context = await this.browser.newContext({
-    ignoreHTTPSErrors: true,
-    permissions: []
-  });
+  if (scenario.pickle.tags.some(tag => tag.name === '@authenticated')) {
+    this.context = await this.browser.newContext({
+      storageState: 'storage/auth.json',
+      ignoreHTTPSErrors: true,
+      permissions: []
+    });
+  } else {
+    this.context = await this.browser.newContext({
+      ignoreHTTPSErrors: true,
+      permissions: []
+    });
+  }
 
   this.page = await this.context.newPage();
-
-this.poManager = new POManager(this.page);
-
+  this.poManager = new POManager(this.page);
 });
   
 
@@ -46,16 +51,7 @@ After(async function (scenario) {
   this.poManager = new POManager(this.page);
 });
   
-  
-  
-  
-  
-  
-  
-  
-
-
-
+ 
 
 
 
